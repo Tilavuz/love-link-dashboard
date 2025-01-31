@@ -5,6 +5,7 @@ import { serverUrl } from "@/helpers/shared";
 
 export default function Header({ children }: { children: ReactNode }) {
   const { auth } = useSelector((state: RootState) => state.auth);
+  
   return (
     <header className="w-full mt-2 p-2 border-b">
       <nav className="flex items-center justify-between">

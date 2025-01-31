@@ -15,10 +15,12 @@ import { authService } from "@/services/auth.service";
 import { useDispatch, useSelector } from "react-redux";
 import { authErrorLogin, login, startLogin } from "@/features/auth-slice";
 import { RootState } from "@/app/store";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authError, loading } = useSelector((state: RootState) => state.auth);
 
@@ -32,6 +34,7 @@ export default function Login() {
       }
       const data = await authService.login({ username, password });
       dispatch(login(data.auth));
+      navigate('/')
     } catch (error) {
       console.error(error);
       dispatch(authErrorLogin("Login failed"));

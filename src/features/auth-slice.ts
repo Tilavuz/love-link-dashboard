@@ -50,7 +50,7 @@ const authSlice = createSlice({
       .addCase(getAuth.rejected, (state) => {
         state.loading = false;
         state.auth = null
-      });
+      })
   },
 });
 

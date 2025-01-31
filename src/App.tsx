@@ -6,6 +6,8 @@ import Loading from "./components/common/loading";
 import useConnect from "./hooks/useConnect";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
+import Login from "./pages/auth/login";
+import Profile from "./pages/profile/profile";
 
 function App() {
   const { loading } = useSelector((state: RootState) => state.auth);
@@ -24,8 +26,16 @@ function App() {
           index: true,
           element: <Dashboard />,
         },
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
       ],
-    }
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
   ]);
 
   return <RouterProvider router={router} />;

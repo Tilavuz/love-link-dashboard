@@ -1,17 +1,21 @@
 import { RootState } from "@/app/store";
-import AppSidebar from "@/components/common/app-sidebar";
+import AppSidebar from "@/components/common/sidebar/app-sidebar";
 import Header from "@/components/common/header/header";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Login from "@/pages/auth/login";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function RootLayout() {
   const { auth } = useSelector((state: RootState) => state.auth);
+  const navigate = useNavigate();
 
-  if (auth === null) {
-    return <Login />;
-  }
+  useEffect(() => {
+    if (auth === null) {
+      navigate("/login");
+      return;
+    }
+  }, [auth, navigate]);
 
   return (
     <SidebarProvider>
