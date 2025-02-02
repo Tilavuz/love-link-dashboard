@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import Login from "./pages/auth/login";
 import Profile from "./pages/profile/profile";
+import Forms from "./pages/forms/forms";
+import User from "./pages/user/user";
 
 function App() {
   const { loading } = useSelector((state: RootState) => state.auth);
@@ -29,6 +31,14 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/forms",
+          element: <Forms />,
+        },
+        {
+          path: "/users/:id",
+          element: <User />,
         },
       ],
     },

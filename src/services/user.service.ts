@@ -30,6 +30,15 @@ class UserService {
       throw error;
     }
   }
+  async getUser(id: string) {
+    try {
+      const res = await privateInstance.get(`/users/user/admin/${id}`);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 }
 
 export const userService = new UserService();

@@ -23,6 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useNavigate } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function UserTable() {
   const [ageMin, setAgeMin] = useState<number>(1);
@@ -36,6 +38,7 @@ export default function UserTable() {
   const { users, paginations, loading } = useSelector(
     (state: RootState) => state.users
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     const query: {
@@ -279,16 +282,19 @@ export default function UserTable() {
                     <TableRow
                       key={`${user?._id}${i}`}
                       className="cursor-pointer"
+                      onClick={() => navigate(`/users/${user?._id}`)}
                     >
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-4">
-                          <div className="w-16 h-16 rounded-full overflow-hidden border">
-                            <img
-                              className="h-full w-full object-cover"
+                          <Avatar className="w-16 h-16">
+                            <AvatarImage
                               src={`${serverUrl}/uploads/${user?.photo}`}
-                              alt="user's profile image"
+                              alt={user?.name}
                             />
-                          </div>
+                            <AvatarFallback>
+                              {user?.name?.charAt(0)}
+                            </AvatarFallback>
+                          </Avatar>
                           <p>{user?.name}</p>
                         </div>
                       </TableCell>

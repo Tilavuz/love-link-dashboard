@@ -17,11 +17,14 @@ class AuthService {
     username,
     password,
   }: {
-    username: string;
-    password: string;
+    username?: string;
+    password?: string;
   }) {
     try {
-      const res = await privateInstance.put("/auths/auth/change", { username, password });
+      const res = await privateInstance.put("/auths/auth/change", {
+        username,
+        password,
+      });
       return res.data;
     } catch (error) {
       console.error(error);
