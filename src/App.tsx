@@ -10,6 +10,7 @@ import Login from "./pages/auth/login";
 import Profile from "./pages/profile/profile";
 import Forms from "./pages/forms/forms";
 import User from "./pages/user/user";
+import Admins from "./pages/admin/admins";
 
 function App() {
   const { loading } = useSelector((state: RootState) => state.auth);
@@ -39,6 +40,10 @@ function App() {
         {
           path: "/users/:id",
           element: <User />,
+        },
+        {
+          path: "/admins",
+          element: <Admins />,
         },
       ],
     },

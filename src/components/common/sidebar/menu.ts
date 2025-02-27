@@ -1,4 +1,4 @@
-import { Home, Keyboard, User } from "lucide-react";
+import { Fingerprint, Home, Keyboard, User } from "lucide-react";
 
 export const menu = [
   {
@@ -15,5 +15,10 @@ export const menu = [
     link: "/forms",
     title: "Forms",
     icon: Keyboard,
+  },
+  {
+    link: "/admins",
+    title: "Admins",
+    icon: Fingerprint,
   },
 ];

@@ -1,18 +1,12 @@
-export interface IAuth {
-  _id?: string;
+import { IUser } from "./user-interface";
+export interface IAuth extends IUser {
   username: string;
   password?: string;
+}
+
+export interface IAdmin {
+  _id: string;
   chatId: string;
-  name?: string;
-  age?: number;
-  location?: string;
-  gender?: "male" | "female";
-  goal?: "love" | "friendship" | "communication" | "dating";
-  photo?: string;
-  action?: string;
-  language_code?: "uz" | "ru" | "en";
-  bio?: string;
-  last_active?: Date;
-  online: boolean;
-  socket_id?: string;
+  username: string;
+  password?: string;
 }
